@@ -16,3 +16,12 @@ export const lastOf = <T>(array: T[]): T | undefined => {
   if (array.length === 0) return undefined;
   return array[array.length - 1];
 };
+
+export const cutBefore = <T>(
+  array: T[],
+  predicate: (elt: T) => boolean
+): T[] => {
+  const index = array.findIndex(predicate);
+  if (index === -1) return array;
+  return array.slice(0, index);
+};
