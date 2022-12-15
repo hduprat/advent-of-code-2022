@@ -1,7 +1,7 @@
 export const sum = (array: number[]) =>
   array.reduce((acc, elt) => acc + elt, 0);
 
-export const mapSum = <T>(array: T[], func: (n: T) => number) =>
+export const mapSum = <T>(array: T[], func: (n: T, index: number) => number) =>
   sum(array.map(func));
 
 export const unique = <T>(array: T[]): T[] =>
