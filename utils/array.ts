@@ -25,3 +25,8 @@ export const cutBefore = <T>(
   if (index === -1) return array;
   return array.slice(0, index);
 };
+
+export const window = <T>(array: T[], length: number): T[][] =>
+  array
+    .slice(length - 1)
+    .map((elt, index) => [...array.slice(index, index + length - 1), elt]);
