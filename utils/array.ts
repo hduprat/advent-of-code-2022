@@ -1,3 +1,29 @@
+declare global {
+  interface Array<T> {
+    isLoopEqual(
+      otherArray: Array<T>,
+      equals?: (a: T, b: T) => boolean
+    ): boolean;
+  }
+}
+
+Array.prototype.isLoopEqual = function <T>(
+  arr: Array<T>,
+  equals?: (a: T, b: T) => boolean
+) {
+  if (this.length !== arr.length) return false;
+  for (let delta = 0; delta < this.length; delta++) {
+    if (
+      this.every((elt, i) => {
+        if (equals) return equals(elt, arr[(i + delta) % arr.length]);
+        return elt === arr[(i + delta) % arr.length];
+      })
+    )
+      return true;
+  }
+  return false;
+};
+
 export const sum = (array: number[]) =>
   array.reduce((acc, elt) => acc + elt, 0);
 
