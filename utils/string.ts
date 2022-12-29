@@ -12,7 +12,7 @@ String.prototype.allIndexesOf = function (substr: string) {
   let currentIndex;
   do {
     currentIndex = this.indexOf(substr, (currentIndex ?? -1) + 1);
-    if (currentIndex > 0) indexes.push(currentIndex);
+    if (currentIndex >= 0) indexes.push(currentIndex);
   } while (currentIndex >= 0);
 
   return indexes;
