@@ -4,6 +4,8 @@ declare global {
       otherArray: Array<T>,
       equals?: (a: T, b: T) => boolean
     ): boolean;
+
+    last(): T;
   }
 }
 
@@ -22,6 +24,10 @@ Array.prototype.isLoopEqual = function <T>(
       return true;
   }
   return false;
+};
+
+Array.prototype.last = function () {
+  return this[this.length - 1];
 };
 
 export const sum = (array: number[]) =>

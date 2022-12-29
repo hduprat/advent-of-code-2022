@@ -17,7 +17,7 @@ export const getAoCInput = async (
 
     const fileContent = await result.text();
 
-    return fileContent ? fileContent.trim().split("\n") : [];
+    return fileContent ? fileContent.trimEnd().split("\n") : [];
   } catch (error) {
     if (error.code === "ENOENT") {
       console.warn(
